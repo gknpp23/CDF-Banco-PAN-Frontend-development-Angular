@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var mensagem = "Hello World - TS";
 console.log(mensagem);
 // Variáveis
@@ -51,3 +60,28 @@ let payment = ["conta de luz", 150, true];
 //Interface para trabalhar com datas
 let birthday = new Date("2022-12-01 05:00"); // padrão americano
 console.log(birthday.toString());
+// Functions
+// Muito similar ao JS, porém podemos tipar os parâmetos e também o seu retorno.
+// O retorno pode ser atribuido de maneira implicita, com base no tipo dos parâmetros
+function addNumber(x, y) {
+    return x + y;
+}
+let sumNumbers = addNumber(4, 7); // variável deve ser do mesmo tipo do retorno.
+// Fuctions multi-types
+function calltoPhone(phone) {
+    return phone;
+}
+// Async function
+function getData(id) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return "Gabriel";
+    });
+}
+const bot = {
+    id: 1,
+    name: "Bender"
+};
+const scientist = {
+    id: 3,
+    name: "Farnsworth"
+};

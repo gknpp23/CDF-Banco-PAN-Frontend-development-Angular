@@ -94,3 +94,84 @@ function calltoPhone(phone: number | string){ // tipos separados por pipe
 async function getData(id: number): Promise<string> {
     return "Gabriel"
 }
+
+//  interfaces ( type X interface )
+//  Type -> usado pra tipar um objeto
+//  Interface é mais usado para trabalhar com classes. Similar a um contrato.
+//  POdemos definir metodo, em ambos os casos.
+
+type robot = {
+    id: number; //propriedades aceitam multi-type, em ambos os casos
+    readonly name: string; //propriedade apenas em modo de leitura ( não aceita novos valores ), aplicavél nos dois casos
+}
+ interface creator {
+    id: number;
+    name: string;
+ }
+const bot: robot = {
+    id: 1,
+    name: "Bender"
+}
+const scientist: creator = {
+    id: 3,
+    name: "Farnsworth"
+}
+
+// Classes
+// Um forma, molde
+
+/*
+     Data modifiers - getters & setters, aplicados a atributos e métodos
+     - public (padrão)
+     - private 
+     - protected
+
+*/
+
+class Character {
+    name: string 
+    private stregth: number     //atributo privado, acesso somente dentro da mesma classe
+    protected skill: number     //atributo protegido de acessos externos, apenas classe e subclasse (herdadas) podem modificar o atributo
+    maxScore?: number // atributo opcional (?)
+
+    //Primeiro metodo, sempre.
+    //é usado para "construir" a classe
+    constructor(name: string, stregth: number,skill: number){ //parâmetros opcionais são sempre os últimos
+
+        //o palavra-chave this,se refere ao escopo da classe
+        this.name = name;
+        this.stregth = stregth;
+        this.skill = skill;
+
+    }
+
+    private attack(): void {
+        console.log(`Attack with ${this.stregth} points`);
+    }
+}
+
+// Subclasses - Herança
+// Nesse exemplo: Character -> Superclass ou pai e Magician -> subclass ou filha
+
+class Magician extends Character{
+    magicPoints: number
+    constructor(name: string, skill:number, stregth:number, magicPoints: number){
+
+        super(name, stregth ,skill); //invoca o constructor da classe super ( ou pai )
+
+        this.magicPoints = magicPoints
+    }
+        
+}
+
+// Generics
+// Operador spread (...) tem o significado de diversos itens
+// o <T> -> e uma definição genérica para o tipo, para substituir o uso do any e evitar inconsistências. -> Tipo dinâmico
+
+function concatArray<T>(...itens: T[]): T[]{
+    return new Array().concat(...itens);
+}
+
+const numArray = concatArray<number[]>([1.5],[3]) // Definimos o tipo como um array de number
+
+// numArray.push("Saitama") // Erro, pois oconseguimos setar o tipo.
