@@ -175,3 +175,64 @@ function concatArray<T>(...itens: T[]): T[]{
 const numArray = concatArray<number[]>([1.5],[3]) // Definimos o tipo como um array de number
 
 // numArray.push("Saitama") // Erro, pois oconseguimos setar o tipo.
+
+// Decorators --> Pesquisar mais sobre
+// Experimental no TS, mas muito usado em frameworks -> Habilitar no tsconfig.json
+// Decoramos o método e adicionamos o gatilho em pontos especificos do código.
+// Ou seja, o método é executado em determinados locais quando for acionado o gatilho, após ocorrer a execução do trecho especificado.
+//Usado para injetar código ou uma ação especifica, após outro trecho ser executado.
+//O método é decorado mas não executado, a menos que tenha um gatilho para invocá-lo
+//target e o alvo, sempre
+
+function ExibirNome(target: any){
+    console.log(target)
+}
+
+@ExibirNome    //Gatilho do método, será executado com o atributo que está abaixo
+class Employee {}
+
+// Outro exemplo
+
+// Factory -> Função que retorna outra função
+
+function apiVersion(version: string){
+    return (target: any) => {
+        Object.assign(target.prototype, {__version: version });
+    }
+}
+
+//@apiVersion("1.10.1") //injeta código ou um novo comportamento
+
+// Attribute decorator
+function minLength(length: number){
+    return (target:any, key:string) => {
+        let _value = target[key]
+
+        const getter = () => _value;
+        const setter = (value:string) => (value: string) => {
+            if(value.length < length){
+                throw new Error(`Nome muito curto!, precisa ter ao menos ${length} caracteres.`);
+            }
+            _value = value;
+        }
+
+        Object.defineProperty(target,key, {
+            get: getter,
+            set: setter,
+        }) 
+    };
+}
+
+class Api {
+    @minLength(3) //adiciona um gatilho como um atributo da classe. Pra adicionar uma lógica adicional qual o valor name for setado.
+
+    name: string;
+
+    constructor(name:string){
+        this.name = name
+    }
+}
+
+const apiExample = new Api("Products");
+
+console.log(apiExample.__version); // Injeção de propriedade de maneira dinâmica, geralmente usada por debaixo dos panos

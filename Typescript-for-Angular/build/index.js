@@ -1,4 +1,10 @@
 "use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -85,3 +91,67 @@ const scientist = {
     id: 3,
     name: "Farnsworth"
 };
+// Classes
+// Um forma, molde
+/*
+     Data modifiers - getters & setters, aplicados a atributos e métodos
+     - public (padrão)
+     - private
+     - protected
+
+*/
+class Character {
+    //Primeiro metodo, sempre.
+    //é usado para "construir" a classe
+    constructor(name, stregth, skill) {
+        //o palavra-chave this,se refere ao escopo da classe
+        this.name = name;
+        this.stregth = stregth;
+        this.skill = skill;
+    }
+    attack() {
+        console.log(`Attack with ${this.stregth} points`);
+    }
+}
+// Subclasses - Herança
+// Nesse exemplo: Character -> Superclass ou pai e Magician -> subclass ou filha
+class Magician extends Character {
+    constructor(name, skill, stregth, magicPoints) {
+        super(name, stregth, skill); //invoca o constructor da classe super ( ou pai )
+        this.magicPoints = magicPoints;
+    }
+}
+// Generics
+// Operador spread (...) tem o significado de diversos itens
+// o <T> -> e uma definição genérica para o tipo, para substituir o uso do any e evitar inconsistências. -> Tipo dinâmico
+function concatArray(...itens) {
+    return new Array().concat(...itens);
+}
+const numArray = concatArray([1.5], [3]); // Definimos o tipo como um array de number
+// numArray.push("Saitama") // Erro, pois oconseguimos setar o tipo.
+// Decorators
+// Experimental no TS, mas muito usado em frameworks -> Habilitar no tsconfig.json
+//Decoramos o metodo e adicionamos o gatilho em pontos especificos do código.
+//Ou seja, o metodo é executado em determinados locais, após ocorrer a execução do trecho abaixo.
+function ExibirNome(target) {
+    console.log(target);
+}
+let Employee = class Employee {
+};
+Employee = __decorate([
+    ExibirNome //Gatilho do método, será executado com o atributo que está abaixo
+], Employee);
+// Outro exemplo
+// Factory -> Função que retorna outra função
+function apiVersion(version) {
+    return (target) => {
+        Object.assign(target.prototype, { __version: version });
+    };
+}
+let Api = class Api {
+};
+Api = __decorate([
+    apiVersion("1.10.1")
+], Api);
+const apiExample = new Api();
+console.log(apiExample.__version);
