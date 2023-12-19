@@ -25,6 +25,7 @@ Para conhecer a base do framework, ou seja, a estrutura minima necessária para 
 
 O Style aplicado a um component é a nível de escopo, ou seja, só é aplicado no component que está inserido no mesmo escopo.
 
+
 ## Estrutura de um component
 
 1. importação do angular core ( Interface )
@@ -45,6 +46,15 @@ O Style aplicado a um component é a nível de escopo, ou seja, só é aplicado 
 })
  ~~~
 
+2. 1  Decorator component c/ uso de arquivos
+~~~ typescript
+ @Component({
+  selector: 'button-component',
+  templateUrl:'./button.component.html',
+  styleUrl:'./button.component.css'
+})
+ ~~~
+
 3. Exportação do component
 ~~~ typescript
  export class App {
@@ -52,7 +62,31 @@ O Style aplicado a um component é a nível de escopo, ou seja, só é aplicado 
  }
 ~~~
 
+### Interpolação de dados
 
+Considerando o componente a seguir:
+~~~ typescript
+import {Component} from '@angular/core'
+
+@Component({
+  selector: 'button-component',
+  standalone: true,
+  templateUrl:'./button.component.html',
+  styleUrl:'./button.component.css'
+})
+
+export class Button{
+  buttonText: string = "Acesse agora!";
+}
+~~~
+
+Na exportação da classe podemos manipular propriedas, desse modo que tornamos nosso componentes mais dinâmicos.
+Ex: APIs e Banco de dados.
+~~~ HTML
+<div> 
+  <button>{{buttonText}}</button>
+</div>
+~~~
    
 
 
