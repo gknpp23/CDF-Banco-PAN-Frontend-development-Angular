@@ -80,15 +80,47 @@ export class Button{
 }
 ~~~
 
-Na exportação da classe podemos manipular propriedas, desse modo que tornamos nosso componentes mais dinâmicos.
+Na exportação da classe podemos manipular propriedades, desse modo tornamos nossos componentes mais dinâmicos.
 Ex: APIs e Banco de dados.
 ~~~ HTML
 <div> 
   <button>{{buttonText}}</button>
 </div>
 ~~~
-   
 
+## Estilo Global vs Scoped
+A folha de estilo posicionado na raiz do elemento ( src in ), é aplicada de maneira global.
+As regras de estilo scoped ( limitado a determinados components ) tem o nível de especificidade maior, portanoe é priorizada na hora da renderização dos elementos.
+É possivel ter múltiplos estilos no componente, seguindo a regra de especificidade, podemos estilizar tanto pelo global quanto pelo scoped.
+
+## Vamos colocar os componentes pra conversar!
+
+Podemos receber parâmetros de um componente filho através da utilização de propriedades de entrada (input properties). As propriedades de entrada permitem que você passe dados de um componente pai para um componente filho. 
+Veja os passos a seguir:
+1. Importamos o módulo Input do Angular core
+   ~~~ typescript
+   import { Component, Input } from '@angular/core';
+   ~~~
+2. Definimos uma propriedade de entrada usando o decorator @input
+   ~~~ typescript
+   export class Button{
+     @Input() label:string = '';
+   }
+   ~~~
+3. No componente pai, passamos o valor desejado para a propriedade de entrada.
+   ~~~ typescript
+   export class App {
+      buttonLabel: string = 'Carrinho';
+   }
+   ~~
+4. No template HTML ( Ou arquivo ) podemos usar o valor da propriedade setada no componente pai.
+   ~~~ HTML
+   <button-component label="{{ buttonLabel }}"></button-component>
+   <button-component label="Compre aqui!"></button-component>
+   <button-component [label]="buttonLabel"></button-component>
+   ~~~
+   * A primeira sintaxe é mais flexível, aceitando também valores em string. é importante ficar atento a notação usada, qualquer valor entre as chaves duplas ( {{ }} ), é considerado uma variável.
+   * A segunda sintaxe aceita apenas propriedades 
 
 
 
