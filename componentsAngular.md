@@ -115,14 +115,69 @@ Veja os passos a seguir:
    ~~
 4. No template HTML ( Ou arquivo ) podemos usar o valor da propriedade setada no componente pai.
    ~~~ HTML
+   <!-- Interpolação -->
    <button-component label="{{ buttonLabel }}"></button-component>
    <button-component label="Compre aqui!"></button-component>
+   
+   <!-- Property binding --> 
    <button-component [label]="buttonLabel"></button-component>
+   <button-component [label]="'texto'"></button-component>
    ~~~
    * A primeira sintaxe é mais flexível, aceitando também valores em string. é importante ficar atento a notação usada, qualquer valor entre as chaves duplas ( {{ }} ), é considerado uma variável.
    * A segunda sintaxe aceita apenas propriedades 
 
 
+## Bynding syntax
 
+Quando um estado de aplicação ( lógica ) passa para estado visual ( View ), chamamos de Data Binding ( Associação de dados ).
 
+### Tipo de Binding
 
+Troca de dados entre o template HTML e component TS pode ser feita atráves de 4 formas:
+
+* Interpolação
+* Property Binding
+  
+* Event Binding -> (evento) = "Handler()"
+     * Criamos o HANDLER do evento na classe do componente
+     * A chamada do evento é feita pelo elemento HTML, seguindo os padrões da linguagem de marcação.
+     * Podemos também passar parametros para função Handler.
+       Ex:
+       ~~~ HTML
+       <button (click)="getAlert()">{{ label }}</button>
+       <button (click)="whatNumberIs(14)">{{ label }}</button>
+       ~~~
+* Two way data binding -> [(ngModel)] = "propriedade"
+     * Comunicação em dois sentidos, template HTML para component TS e vice versa.
+     * Podemos usar o property binding ( que tem sentido TS p/ HTML ) simultaneamente com event binding ( que tem sentido html p/ TS)
+       Ex:
+       ~~~ HTML
+       <input type="text"
+        [value]="placeholder" 
+        (input)="placeholder = $any($event.target).value"
+        /> 
+         <p> {{ placeholder }} </p>
+       ~~~
+### Diretiva ngModel
+
+Uma maneira mais prática de definir o two way data binding é usando a diretiva ngModel.
+Ex: 
+   ~~~ typescript
+   [(ngModel)] = "placeholder"
+   // É equivalente ao...
+   [value]="placeholder" 
+   (input)="placeholder = $any($event.target).value"
+   ~~~
+## Style Binding
+Associação de  estilo, para tornar a estilização mais dinâmica.
+Ex: 
+~~~ typescript
+export class EntryDataComponent {
+
+  color: string = "red"
+
+}
+~~~
+~~~ HTML
+<p [style.color]="color"> {{ placeholder }} </p>
+~~~ 
