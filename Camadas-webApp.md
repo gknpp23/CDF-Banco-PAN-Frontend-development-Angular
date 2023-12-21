@@ -39,3 +39,7 @@
 
 É possivel aplicar essas camadas "na unha", sem uso de framework, porém aumenta muito a complexidade.
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9de2ab1 (update Camadas-webApp.md)
