@@ -1,0 +1,17 @@
+<h1 [ngStyle]="{'background': corFundo, 'color': corTitulo}"> Curso Angular </h1>
+<p [ngClass]="estilo">comp-atributos works!</p>
+<button (click)="desabilitar()"> Desabilitar</button>
+
+<ng-content select="h2"></ng-content>
+
+<!--  Notação "caixa de banana" - [()]-->
+<!--  Não vem por padrão no Angular -->
+
+<input type="text" [(ngModel)]="item">
+<button (click)="adicionarItem()">Adicionar</button>
+
+<ol>
+    <li *ngFor="let item of lista">{{ item }}</li>
+</ol>
+
+

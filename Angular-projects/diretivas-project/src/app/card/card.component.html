@@ -1,0 +1,37 @@
+<h1 *ngIf="false"> Não irei aparecer, xará</h1>
+<p>card works!</p>
+<ul>
+    <li *ngFor="let p of produtos; let i = index"> {{ i }} - {{ p }}</li>
+</ul>
+
+<div [ngSwitch]="menuType">
+
+    <div *ngSwitchCase="'user'">
+        <ul>
+            <li> Editar perfil </li>
+            <li> Adicionar cartão </li>
+        </ul>
+    </div>
+
+    <div *ngSwitchCase="'admin'">
+        <ul>
+            <li> Editar perfil </li>
+            <li> Adicionar cartão </li>
+            <li>Gerenciar usuários</li>
+        </ul>
+    </div>
+
+    <div *ngSwitchCase="'superuser'">
+        <ul>
+            <li> Editar perfil </li>
+            <li> Adicionar cartão </li>
+            <li> Gerenciar usuários </li>
+            <li> Gerenciar admins </li>
+        </ul>
+    </div>
+
+    <div *ngSwitchDefault>
+        <li> Faça login </li>
+    </div>
+
+</div>

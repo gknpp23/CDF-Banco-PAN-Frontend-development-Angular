@@ -1,0 +1,10 @@
+<app-comp-atributos></app-comp-atributos>
+
+<app-card *ngIf="IsAliveCard; else misteryBlock"></app-card>
+
+<!-- Bloco condicional, exebido apenas se uma determinada condição for atendida -->
+<ng-template #misteryBlock>
+  <p>I am a mistery..</p>
+</ng-template>
+
+<router-outlet></router-outlet>
