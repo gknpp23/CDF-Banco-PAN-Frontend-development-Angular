@@ -1,4 +1,4 @@
-<h1 align="center">| Coding The Future - Banco-PAN |</h1> 
+<h1 align="center">| Coding The Future - Banco Pan |</h1> 
 <h2 align="center">Frontend development with Angular</h2>
 <p align="center"><img src="img/DIO.png"  width="150"></p>
 <br>
@@ -13,7 +13,7 @@
 </p>
 <br>
 <hr>
-
+<p align="center"><img src="img/bootcamp-PAN.webp"  width="650"></p>
 ### Tópicos 
 
 :small_blue_diamond: [Descrição do projeto](#descrição-do-projeto)
@@ -24,13 +24,12 @@
 
 :small_blue_diamond: [Como executar](#como-executar-arrow_forward)
 
-<p align="center"><img src="img/JS.webp"  width="500"></p>
 
 ## Descrição do projeto 
 <p> 
-  Este repositório é o resultado do meu trabalho durante o bootcamp de Angular da plataforma DIO.  
+  Este repositório é o resultado dos meus estudos durante o bootcamp ofertado pelo banco Pan na plataforma DIO.  
   
-  Aqui, você encontrará anotações detalhadas e código-fonte relacionado ao projeto desenvolvido durante o curso.
+  Aqui, você encontrará anotações detalhadas e código-fonte relacionado aos projetos desenvolvidos durante o curso.
   
 </p>
 
@@ -47,11 +46,21 @@
 
 ## Deploy do projeto :dash:
 
-###   Projeto - Pokedex
+###   Projeto - Blog
 > 
 <br>
 
+## Deploy do projeto :dash:
 
+###   Projeto - Loja de games
+> 
+
+<br>
+
+## Deploy do projeto :dash:
+
+###   Projeto - Buzzfeed
+>
 <br>
 
 <hr>
@@ -64,8 +73,6 @@ No terminal, clone o projeto:
 git clone https://github.com/gknpp23/
 ```
 <br>
-
-
 
 <br>
 
