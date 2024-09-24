@@ -88,7 +88,7 @@ Espero que este recurso seja útil para quem procura aprender mais sobre JavaScr
 
 The [MIT License]() (MIT)
 
-Copyright :copyright: 2022 - Formação JS DIO.
+Copyright :copyright: 2024 - Bootcamp Desenvolvimento Frontend com Angular - Banco Pan.
 
 <hr>
 
